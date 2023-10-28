@@ -75,38 +75,42 @@ public class Main {
         List<String> combinedList2 = cortege.getList2();
         List<String> combinedList3 = cortege.getList3();
         List<String> combinedList4 = cortege.getList4();
-
+        int n=-1;
         for (int i = 0; i < combinedList1.size(); i++) {
-            if ((combinedList2.get(i).equals("2") && combinedList3.get(i).equals("2")) ||
-                    (combinedList2.get(i).equals("2") && combinedList4.get(i).equals("2")) ||
-                    (combinedList3.get(i).equals("2") && combinedList4.get(i).equals("2"))) {
-                for (List<String> list:List.of(combinedList1, combinedList2, combinedList3, combinedList4)) {
-                    list.remove(i);
-                    System.out.println(")) удалена позиция ((");
+            if (combinedList2.get(i).equals("2") || combinedList3.get(i).equals("2") || combinedList4.get(i).equals("2")) {
+                if ((combinedList2.get(i).equals("2") && combinedList3.get(i).equals("2")) ||
+                        (combinedList2.get(i).equals("2") && combinedList4.get(i).equals("2")) ||
+                        (combinedList3.get(i).equals("2") && combinedList4.get(i).equals("2"))) {
+                    System.out.println(")) студент имеет больше одной двойки -- " + combinedList1.get(i));
+                    combinedList1.remove(i);
+                    combinedList2.remove(i);
+                    combinedList3.remove(i);
+                    combinedList4.remove(i);
+                } else {
+                    n = i;
+                    System.out.println(combinedList1.get(i));
                 }
             }
-            if (combinedList2.get(i).equals("2") || combinedList3.get(i).equals("2") || combinedList4.get(i).equals("2")){
-                System.out.println(combinedList1.get(i));
-            }
-            else {
+        }
+            if (n==-1){
                 System.out.println("!! нет двоечников !!");
             }
         }
-    }
 
     private static void findCStudents(Cortege cortege) {
         List<String> combinedList1 = cortege.getList1();
         List<String> combinedList2 = cortege.getList2();
         List<String> combinedList3 = cortege.getList3();
         List<String> combinedList4 = cortege.getList4();
-
+        int n=-1;
         for (int i = 0; i < combinedList1.size(); i++) {
             if (combinedList2.get(i).equals("3") || combinedList3.get(i).equals("3") || combinedList4.get(i).equals("3")) {
+                n=i;
                 System.out.println(combinedList1.get(i));
             }
-            else {
-                System.out.println("== нет троечников ==");
-            }
+        }
+        if (n == -1){
+            System.out.println("== нет троечников ==");
         }
     }
 
@@ -115,16 +119,17 @@ public class Main {
         List<String> combinedList2 = cortege.getList2();
         List<String> combinedList3 = cortege.getList3();
         List<String> combinedList4 = cortege.getList4();
-        boolean samePositions = true;
+        int n=-1;
         for (int i = 0; i < combinedList1.size(); i++) {
-            if (!(combinedList2.get(i).equals("5") && combinedList3.get(i).equals("5") && combinedList4.get(i).equals("5"))){
-               samePositions=false;
-               break;
-       //         System.out.println("== отличники отсутствуют ==");
-            }
-            else {
+            if (combinedList2.get(i).equals("5") && combinedList3.get(i).equals("5") && combinedList4.get(i).equals("5")) {
+                n = i;
                 System.out.println(combinedList1.get(i));
             }
         }
-    }
+        if (n == -1){
+                System.out.println("== отличники отсутствуют ==");
+            }
+        }
 }
+
+
